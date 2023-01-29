@@ -21,10 +21,16 @@ export const notesSlice = createSlice({
     reducers: {
         addNote: (state, action) => {
             state.push(action.payload)
+        },
+        deleteNote: (state, action) => {
+            const noteFound = state.find(note => note.id === action.payload)
+            if (noteFound) {
+                state.splice(state.indexOf(noteFound), 1)
+            }
         }
     }
 })
 
-export const { addNote } = notesSlice.actions
+export const { addNote, deleteNote } = notesSlice.actions
 
 export default notesSlice.reducer

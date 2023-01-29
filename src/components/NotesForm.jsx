@@ -15,8 +15,8 @@ const NotesForm = () => {
         id: uuid(),
       })
     );
-    document.querySelector("#title").value = "";
-    document.querySelector("#description").value = "";
+    //document.querySelector("#title").value = "";
+    //document.querySelector("#description").value = "";
   };
 
   return (
