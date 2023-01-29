@@ -1,18 +1,16 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+
 //hardcode notes
 const initialState = [
     {
         id: "1",
-        title: "Note 1",
-        description: "Note 1 Description"
-    },
-    {
-        id: "2",
-        title: "Note 2",
-        description: "Note 2 Description"
+        title: "Note Example",
+        description: "Note Description"
     }
 ]
+
+localStorage.setItem("NOTES_V1", JSON.stringify(initialState))
 
 // como creamos un useState, inicializamos un valor
 export const notesSlice = createSlice({
@@ -21,6 +19,7 @@ export const notesSlice = createSlice({
     reducers: {
         addNote: (state, action) => {
             state.push(action.payload)
+            localStorage.setItem("NOTES_V1", JSON.stringify(state))
         },
         updateNote: (state, action) => {
             const { id, title, description } = action.payload
@@ -30,12 +29,17 @@ export const notesSlice = createSlice({
                 noteFound.title = title
                 noteFound.description = description
             }
+
+            localStorage.setItem("NOTES_V1", JSON.stringify(state))
+
         },
         deleteNote: (state, action) => {
             const noteFound = state.find(note => note.id === action.payload)
             if (noteFound) {
                 state.splice(state.indexOf(noteFound), 1)
             }
+
+            localStorage.setItem("NOTES_V1", JSON.stringify(state))
         },
 
     }
