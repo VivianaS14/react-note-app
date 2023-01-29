@@ -6,12 +6,18 @@ import React from "react";
 import NotesList from "./components/NotesList";
 import NotesForm from "./components/NotesForm";
 
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+
 const App = () => {
   return (
     <div>
-      <h1>Hello World!</h1>
-      <NotesList />
-      <NotesForm />
+      <h1>My Notes!</h1>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<NotesList />} />
+          <Route path="/create-note" element={<NotesForm />} />
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 };

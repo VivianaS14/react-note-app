@@ -3,10 +3,12 @@ import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
 import { addNote } from "../features/notes/notesSlice";
 import { v4 as uuid } from "uuid";
+import { useNavigate } from "react-router-dom";
 
 const NotesForm = () => {
   const { register, handleSubmit } = useForm();
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const onSubmit = (note) => {
     dispatch(
@@ -15,8 +17,7 @@ const NotesForm = () => {
         id: uuid(),
       })
     );
-    //document.querySelector("#title").value = "";
-    //document.querySelector("#description").value = "";
+    navigate("/");
   };
 
   return (

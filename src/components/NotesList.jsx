@@ -1,6 +1,7 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
 import { deleteNote } from "../features/notes/notesSlice";
 
 const NotesList = () => {
@@ -14,6 +15,10 @@ const NotesList = () => {
 
   return (
     <div>
+      <header>
+        <h2>Notes {notes.length}</h2>
+        <Link to="/create-note">Create task</Link>
+      </header>
       {notes.map((note) => (
         <div key={note.id}>
           <h3>{note.title}</h3>
