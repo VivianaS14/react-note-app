@@ -19,11 +19,13 @@ const NotesList = () => {
         <h2>Notes {notes.length}</h2>
         <Link to="/create-note">Create task</Link>
       </header>
+
       {notes.map((note) => (
         <div key={note.id}>
           <h3>{note.title}</h3>
           <p>{note.description}</p>
           <button onClick={() => handleDelete(note.id)}>Delete</button>
+          <Link to={`/edit-note/${note.id}`}>Edit</Link>
         </div>
       ))}
     </div>
