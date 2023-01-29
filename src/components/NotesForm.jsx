@@ -43,27 +43,41 @@ const NotesForm = () => {
       document.getElementById("title").value = note.title;
       document.getElementById("description").value = note.description;
     }
-  }, []);
+  }, [params.id, note]);
 
   return (
-    <div>
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <input
-          name="title"
-          id="title"
-          type="text"
-          placeholder="Title"
-          {...register("title")}
-        />
-        <textarea
-          name="description"
-          id="description"
-          placeholder="Description"
-          {...register("description")}
-        ></textarea>
-        <button type="submit">Save</button>
-      </form>
-    </div>
+    <form
+      className="bg-zinc-800 max-w-sm p-4"
+      onSubmit={handleSubmit(onSubmit)}
+    >
+      <label className="block text-xs font-bold mb-2" htmlFor="title">
+        Note:{" "}
+      </label>
+      <input
+        name="title"
+        id="title"
+        className="w-full p-2 rounded-md bg-zinc-600 mb-2"
+        type="text"
+        placeholder="Title"
+        {...register("title")}
+      />
+      <label className="block text-xs font-bold mb-2" htmlFor="description">
+        Description:{" "}
+      </label>
+      <textarea
+        name="description"
+        id="description"
+        className="w-full p-2 rounded-md bg-zinc-600 mb-2"
+        placeholder="Description"
+        {...register("description")}
+      ></textarea>
+      <button
+        className="w-2/6 bg-indigo-600 px-2 py-1 rounded-md"
+        type="submit"
+      >
+        Save
+      </button>
+    </form>
   );
 };
 

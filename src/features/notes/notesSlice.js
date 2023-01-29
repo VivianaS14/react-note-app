@@ -1,8 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-
 //hardcode notes
-const initialState = [
+const hardCodeNotes = [
     {
         id: "1",
         title: "Note Example",
@@ -10,7 +9,15 @@ const initialState = [
     }
 ]
 
-localStorage.setItem("NOTES_V1", JSON.stringify(initialState))
+const localsValues = localStorage.getItem("NOTES_V1")
+let initialState
+
+if (!localsValues) {
+    localStorage.setItem("NOTES_V1", JSON.stringify(hardCodeNotes))
+    initialState = hardCodeNotes
+} else {
+    initialState = JSON.parse(localsValues)
+}
 
 // como creamos un useState, inicializamos un valor
 export const notesSlice = createSlice({
